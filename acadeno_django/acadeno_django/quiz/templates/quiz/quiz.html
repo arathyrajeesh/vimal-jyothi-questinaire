@@ -1,0 +1,47 @@
+{% extends 'quiz/base.html' %}
+{% block content %}
+  <div class="quizhead">
+    <span class="qcount">Q<b>{{ index_display|stringformat:"02d" }}</b> / {{ total }}</span>
+    <span class="qcount">{{ name }}</span>
+  </div>
+  <div class="track"><div class="track-fill" style="width:{{ progress_pct }}%"></div></div>
+  <p class="qtopic">{{ question.outcome_label }}</p>
+  <p class="qtext">{{ question.text|linebreaksbr }}</p>
+
+  <form method="post" novalidate id="quizForm">
+    {% csrf_token %}
+    <div class="options">
+      {% for opt in options %}
+        <label class="opt {% if selected == opt.idx %}selected{% endif %}">
+          <input type="radio" name="answer" value="{{ opt.idx }}" {% if selected == opt.idx %}checked{% endif %}>
+          <span class="opt-label"><span class="optkey">{{ opt.key }}</span>{{ opt.text }}</span>
+        </label>
+      {% endfor %}
+    </div>
+
+    <div class="navrow">
+      {% if has_back %}
+        <button class="btn btn-ghost" type="submit" name="nav" value="back">← Back</button>
+      {% else %}
+        <span></span>
+      {% endif %}
+      <button class="btn btn-primary" type="submit" name="nav" value="next" id="nextBtn" {% if selected is None %}disabled{% endif %}>
+        {% if is_last %}Submit responses{% else %}Next →{% endif %}
+      </button>
+    </div>
+  </form>
+
+  <script>
+    // Progressive enhancement: highlight the chosen option and enable the
+    // Next/Submit button as soon as a choice is made, without a round trip.
+    var form = document.getElementById('quizForm');
+    var nextBtn = document.getElementById('nextBtn');
+    form.querySelectorAll('.opt').forEach(function (label) {
+      label.addEventListener('click', function () {
+        form.querySelectorAll('.opt').forEach(function (l) { l.classList.remove('selected'); });
+        label.classList.add('selected');
+        nextBtn.disabled = false;
+      });
+    });
+  </script>
+{% endblock %}

@@ -1,0 +1,60 @@
+{% extends 'quiz/base.html' %}
+{% block content %}
+  <div class="done-header">
+    <div class="done-icon">✓</div>
+    <div>
+      <h1 style="font-size:26px; margin-bottom:4px;">Thank you, {{ name }}!</h1>
+      <p class="doneline" style="margin:0;">
+        Your submission is complete. Here is your detailed performance breakdown.
+      </p>
+    </div>
+  </div>
+
+  <div class="score-card">
+    <div class="score-main">
+      <span class="score-number">{{ submission.score }} / {{ submission.total }}</span>
+      <span class="score-percentage">{{ submission.percent }}%</span>
+    </div>
+    <div class="score-label">Total Score</div>
+  </div>
+
+  <h2 class="results-title">Question Breakdown & Correct Answers</h2>
+
+  <div class="results-list">
+    {% for item in question_results %}
+      <div class="result-item {% if item.is_correct %}item-correct{% else %}item-incorrect{% endif %}">
+        <div class="result-head">
+          <span class="q-num">Q{{ item.num|stringformat:"02d" }}</span>
+          <span class="q-status {% if item.is_correct %}status-correct{% else %}status-incorrect{% endif %}">
+            {% if item.is_correct %}✓ Correct{% else %}✗ Incorrect{% endif %}
+          </span>
+        </div>
+        <p class="q-topic-tag">{{ item.question.outcome_label }}</p>
+        <p class="q-text-body">{{ item.question.text|linebreaksbr }}</p>
+
+        <div class="options-review">
+          {% for opt in item.options %}
+            <div class="opt-review 
+                {% if opt.is_correct %}opt-correct-ans{% endif %}
+                {% if opt.is_user_selected and not opt.is_correct %}opt-user-wrong{% endif %}
+                {% if opt.is_user_selected and opt.is_correct %}opt-user-right{% endif %}">
+              
+              <span class="opt-key-badge">{{ opt.key }}</span>
+              <span class="opt-text-val">{{ opt.text }}</span>
+              
+              {% if opt.is_correct %}
+                <span class="badge badge-correct">✓ Correct Answer</span>
+              {% elif opt.is_user_selected %}
+                <span class="badge badge-wrong">Your Choice</span>
+              {% endif %}
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
+  <div style="margin-top: 30px; text-align: center;">
+    <a href="{% url 'quiz:landing' %}" class="btn btn-ghost">Return to Home</a>
+  </div>
+{% endblock %}

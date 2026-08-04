@@ -1,0 +1,35 @@
+{% extends 'quiz/base.html' %}
+{% block footlink %}{% endblock %}
+{% block content %}
+  <p class="eyebrow">Staff review</p>
+  <h1 style="font-size:24px;">Submissions
+    <span style="color:#9AA3AF; font-family:'IBM Plex Mono',monospace; font-size:15px;">({{ count }})</span>
+  </h1>
+
+  {% if rows %}
+  <table class="admin-table">
+    <thead>
+      <tr><th>Name</th><th>Score</th><th>Per-outcome</th><th>Submitted</th></tr>
+    </thead>
+    <tbody>
+      {% for row in rows %}
+      <tr>
+        <td>{{ row.submission.name }}</td>
+        <td><span class="score-pill {{ row.score_class }}">{{ row.submission.score }}/{{ row.submission.total }} · {{ row.pct }}%</span></td>
+        <td class="breakdown">{{ row.breakdown_display }}</td>
+        <td style="font-family:'IBM Plex Mono',monospace; font-size:11.5px; color:#9AA3AF;">
+          {{ row.submission.submitted_at|date:"d M Y" }} {{ row.submission.submitted_at|date:"H:i" }}
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p class="empty">No submissions yet.</p>
+  {% endif %}
+
+  <div class="row-end" style="margin-top:24px;">
+    <a class="btn btn-ghost" href="{% url 'quiz:staff_list' %}">Refresh</a>
+    <a class="btn btn-primary" href="{% url 'quiz:staff_exit' %}" style="margin-left:10px;">Exit staff view</a>
+  </div>
+{% endblock %}

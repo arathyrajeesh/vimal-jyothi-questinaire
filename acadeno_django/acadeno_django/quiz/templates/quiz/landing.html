@@ -1,0 +1,24 @@
+{% extends 'quiz/base.html' %}
+{% block content %}
+  <p class="eyebrow">Bootcamp outcomes check</p>
+  <h1>AI-Integrated Python<br>&amp; Django Bootcamp</h1>
+  <p class="lede">A short 15-question check mapped to the programme's five expected outcomes — Python, Django, database &amp; auth, AI integration, and deployment.</p>
+  <div class="outcome-tags">
+    <span class="otag">01 Python</span>
+    <span class="otag">02 Django</span>
+    <span class="otag">03 CRUD &amp; Auth</span>
+    <span class="otag">04 AI Integration</span>
+    <span class="otag">05 Deployment</span>
+  </div>
+
+  <form method="post" novalidate>
+    {% csrf_token %}
+    <label class="fieldlabel" for="nameInput">Your name</label>
+    <input type="text" id="nameInput" name="name" placeholder="e.g. Anjali Menon"
+           autocomplete="off" value="{{ name }}" autofocus required>
+    <p class="hint">Enter your name to begin the assessment.</p>
+    <div class="row-end">
+      <button class="btn btn-primary" type="submit">Begin check →</button>
+    </div>
+  </form>
+{% endblock %}

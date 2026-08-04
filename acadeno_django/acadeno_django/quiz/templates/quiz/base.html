@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Acadeno — Bootcamp Outcomes Check</title>
+<link rel="stylesheet" href="{% static 'quiz/style.css' %}">
+</head>
+<body>
+<div class="shell">
+
+  <div class="brandbar">
+    <svg class="mark" viewBox="0 0 40 40" fill="none">
+      <path d="M20 3 L36 33 H4 L20 3Z" fill="#152A47"/>
+      <path d="M20 12 L29 30 H11 L20 12Z" fill="#E8622C"/>
+    </svg>
+    <div class="brandtext">ACADENO <span>/</span> OUTCOMES CHECK</div>
+  </div>
+
+  <div class="card">
+    <div class="card-inner">
+      {% if messages %}
+        {% for message in messages %}
+          <p class="form-error">{{ message }}</p>
+        {% endfor %}
+      {% endif %}
+      {% block content %}{% endblock %}
+    </div>
+  </div>
+
+  {% block footlink %}
+  <div class="stafflink"><a href="{% url 'quiz:staff_gate' %}">Staff review →</a></div>
+  {% endblock %}
+  <div class="footnote">AI-Integrated Python &amp; Django Bootcamp · Acadeno Technologies</div>
+</div>
+</body>
+</html>
