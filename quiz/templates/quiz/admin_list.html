@@ -28,8 +28,19 @@
   <p class="empty">No submissions yet.</p>
   {% endif %}
 
-  <div class="row-end" style="margin-top:24px;">
-    <a class="btn btn-ghost" href="{% url 'quiz:staff_list' %}">Refresh</a>
-    <a class="btn btn-primary" href="{% url 'quiz:staff_exit' %}" style="margin-left:10px;">Exit staff view</a>
+  <div class="row-end no-print" style="margin-top:24px;">
+    <button onclick="window.print()" class="btn btn-primary" type="button">📥 Download PDF Report</button>
+    <a class="btn btn-ghost" href="{% url 'quiz:staff_list' %}" style="margin-left:10px;">Refresh</a>
+    <a class="btn btn-ghost" href="{% url 'quiz:staff_exit' %}" style="margin-left:10px;">Exit staff view</a>
   </div>
+
+  <style>
+    @media print {
+      body { background: #fff !important; padding: 0 !important; }
+      .brandbar, .footnote, .stafflink, .no-print { display: none !important; }
+      .card { border: none !important; box-shadow: none !important; }
+      .card::before { display: none !important; }
+      .admin-table th, .admin-table td { border-color: #ccc !important; }
+    }
+  </style>
 {% endblock %}

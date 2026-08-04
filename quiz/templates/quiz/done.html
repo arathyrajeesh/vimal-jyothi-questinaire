@@ -54,7 +54,18 @@
     {% endfor %}
   </div>
 
-  <div style="margin-top: 30px; text-align: center;">
+  <div style="margin-top: 30px; display: flex; justify-content: center; gap: 12px;" class="no-print">
+    <button onclick="window.print()" class="btn btn-primary" type="button">📥 Download PDF Report</button>
     <a href="{% url 'quiz:landing' %}" class="btn btn-ghost">Return to Home</a>
   </div>
+
+  <style>
+    @media print {
+      body { background: #fff !important; padding: 0 !important; }
+      .brandbar, .footnote, .stafflink, .no-print { display: none !important; }
+      .card { border: none !important; box-shadow: none !important; }
+      .card::before { display: none !important; }
+      .result-item { page-break-inside: avoid; }
+    }
+  </style>
 {% endblock %}

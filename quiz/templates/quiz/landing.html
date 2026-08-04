@@ -11,6 +11,16 @@
     <span class="otag">05 Deployment</span>
   </div>
 
+  <div style="background: var(--cream); border: 1px solid var(--line); padding: 10px 14px; border-radius: 4px; margin-bottom: 24px; display: flex; align-items: center; justify-content: space-between;">
+    <span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--navy); font-weight: 600;">
+      🎓 Total Students Attended:
+    </span>
+    <span style="font-family: 'IBM Plex Mono', monospace; font-size: 14px; font-weight: 700; color: var(--orange);">
+      {{ total_students }}
+    </span>
+  </div>
+
+
   <form method="post" novalidate>
     {% csrf_token %}
     <label class="fieldlabel" for="nameInput">Your name</label>

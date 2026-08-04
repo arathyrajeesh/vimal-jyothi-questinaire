@@ -39,7 +39,9 @@ def landing(request):
         request.session[SESSION_CURRENT] = 0
         return redirect('quiz:quiz_question')
 
-    return render(request, 'quiz/landing.html', {'name': ''})
+    total_students = Submission.objects.count()
+    return render(request, 'quiz/landing.html', {'name': '', 'total_students': total_students})
+
 
 
 
