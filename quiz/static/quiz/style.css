@@ -13,7 +13,7 @@
   --good:#2E7D5B;
 }
 *{box-sizing:border-box;}
-html,body{margin:0;padding:0;}
+html,body{margin:0;padding:0;overflow-x:hidden;}
 body{
   background:var(--cream);
   background-image:
@@ -31,36 +31,58 @@ body{
   *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;}
 }
 
-.shell{width:100%; max-width:640px;}
+.shell{width:100%; max-width:1160px; margin:0 auto;}
 
 .brandbar{
-  display:flex; align-items:center; gap:10px;
+  display:flex; align-items:center; justify-content:space-between;
+  gap:10px;
   margin-bottom:28px;
+  padding:16px 18px;
+  background:rgba(251,247,241,0.9);
+  border:1px solid rgba(228,220,208,0.65);
+  border-radius:22px;
 }
-.mark{ width:34px;height:34px; flex-shrink:0; }
+.mark{
+  width:36px;
+  height:36px;
+  flex-shrink:0;
+  border-radius:12px;
+  background:#fff;
+  box-shadow:0 10px 24px rgba(0,0,0,0.08);
+}
 .brandtext{
   font-family:'IBM Plex Mono', monospace;
-  font-size:12px; letter-spacing:0.14em; text-transform:uppercase;
+  font-size:11px;
+  letter-spacing:0.18em;
+  text-transform:uppercase;
   color:var(--navy);
-  font-weight:600;
+  font-weight:700;
 }
 .brandtext span{color:var(--orange);}
 
 .card{
+  width:100%;
   background:var(--paper);
-  border:1px solid var(--line);
-  border-radius:2px;
-  box-shadow: 0 1px 0 rgba(21,42,71,0.04), 0 12px 32px -20px rgba(21,42,71,0.25);
+  border:1px solid rgba(0,0,0,0.08);
+  border-radius:32px;
+  box-shadow: 0 28px 60px rgba(0,0,0,0.08);
   overflow:hidden;
   position:relative;
 }
-.card::before{
-  content:"";
-  position:absolute; top:0; left:0; right:0; height:4px;
-  background:linear-gradient(90deg, var(--navy) 0%, var(--navy) 60%, var(--orange) 100%);
-}
-.card-inner{padding:40px 36px;}
-@media (max-width:520px){ .card-inner{padding:28px 22px;} }
+.card::before{ display:none; }
+.card-inner{ width:100%; padding:40px 36px; }
+
+.landing-grid{ display:grid; grid-template-columns: minmax(320px, 1.1fr) minmax(320px, 0.9fr); min-height:560px; width:100%; max-width:100%; margin:0; gap:0; overflow:hidden; border-radius:28px; }
+.landing-hero-col{ background:linear-gradient(135deg, #FAF4EB 0%, #F5EDE0 100%); border-right:1px solid rgba(0,0,0,0.04); display:flex; align-items:center; justify-content:center; padding:56px 42px; }
+.hero-logo-wrapper{ width:100%; max-width:420px; display:flex; align-items:center; justify-content:center; padding:24px; }
+.hero-logo-wrapper img{ width:auto; height:auto; max-height:420px; max-width:100%; object-fit:contain; }
+.landing-form-col{ padding:54px 46px; display:flex; flex-direction:column; justify-content:center; gap:22px; }
+.stats-banner{ background:#fff5eb; border:1px solid rgba(232,93,38,0.16); border-radius:18px; padding:16px 20px; margin-bottom:28px; display:flex; align-items:center; justify-content:space-between; font-size:13px; font-family:'IBM Plex Mono', monospace; color:#2A394E; box-shadow: inset 0 1px 0 rgba(255,255,255,0.7); }
+.stats-banner b{ color:#E85D26; font-size:14px; }
+.stafflink{ text-align:right; margin-top:10px; font-size:13px; }
+.stafflink a{ color:#5A6677; text-decoration:none; font-weight:600; }
+.stafflink a:hover{ color:#E85D26; }
+
 
 .eyebrow{
   font-family:'IBM Plex Mono', monospace;
@@ -269,4 +291,173 @@ input[type=text]:focus{ border-color:var(--navy); background:var(--paper); }
 .badge-wrong { background: #B23B2E; color: #fff; }
 
 .footnote{ text-align:center; font-size:11.5px; color:#9AA3AF; margin-top:18px; font-family:'IBM Plex Mono', monospace;}
+
+/* Mobile & Tablet Responsive Media Queries */
+@media (max-width: 768px) {
+  body {
+    padding: 12px 10px;
+    align-items: flex-start;
+  }
+  .shell {
+    width: 100%;
+    max-width: 100%;
+  }
+  .card-inner {
+    padding: 24px 18px;
+  }
+  .brandbar {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+  .brandtext {
+    font-size: 11px;
+  }
+  .landing-grid {
+    grid-template-columns: 1fr;
+    min-height: auto;
+    margin: 0;
+  }
+  .landing-hero-col {
+    padding: 32px 20px;
+    border-right: none;
+    border-bottom: 1px solid rgba(0,0,0,0.04);
+    min-height: 280px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .hero-logo-wrapper {
+    max-width: 220px;
+  }
+  .hero-logo-wrapper img {
+    max-height: 220px;
+  }
+  .landing-form-col {
+    padding: 28px 20px;
+  }
+  .stats-banner {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10px;
+  }
+  .row-end {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+  .row-end .btn {
+    width: 100%;
+    justify-content: center;
+  }
+  .quizhead {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  h1 {
+    font-size: 24px;
+    line-height: 1.2;
+  }
+  .qtext {
+    font-size: 18px;
+  }
+  .opt {
+    padding: 12px 14px;
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .opt input {
+    margin-top: 0;
+  }
+  .opt-label {
+    font-size: 14px;
+  }
+  .navrow {
+    flex-direction: column-reverse;
+    gap: 10px;
+    align-items: stretch;
+  }
+  .navrow .btn {
+    width: 100%;
+  }
+  .admin-table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+  .stafflink {
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 8px 6px;
+  }
+  .card-inner {
+    padding: 20px 14px;
+  }
+  .landing-form-col {
+    padding: 20px 16px;
+  }
+  .hero-logo-wrapper {
+    max-width: 160px;
+  }
+  .brandbar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+  .stats-banner {
+    font-size: 12px;
+    padding: 10px 14px;
+  }
+  .row-end {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .row-end .btn {
+    width: 100%;
+  }
+  .result-head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .options-review .opt-review {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  h1 {
+    font-size: 21px;
+  }
+  .eyebrow {
+    font-size: 10.5px;
+  }
+  .lede {
+    font-size: 13.5px;
+  }
+  .otag {
+    font-size: 10px;
+    padding: 4px 8px;
+  }
+  .qtext {
+    font-size: 16.5px;
+  }
+  .opt {
+    padding: 10px 12px;
+  }
+  .admin-table td {
+    padding: 8px 6px;
+  }
+  .score-number {
+    font-size: 26px;
+  }
+  .score-percentage {
+    font-size: 18px;
+  }
+}
+
 

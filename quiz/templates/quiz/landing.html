@@ -1,16 +1,15 @@
 {% extends 'quiz/base.html' %}
 {% load static %}
 {% block content %}
-<div class="landing-grid">
-  <div class="landing-hero-col">
-    <div class="hero-logo-wrapper">
-      <img src="{% static 'quiz/acadeno_logo.png' %}" alt="Acadeno Logo" class="hero-logo-img">
-    </div>
-  </div>
+<div class="brandbar">
+  <img src="{% static 'quiz/logo.png' %}" alt="Acadeno mark" class="mark">
+  <div class="brandtext">ACADENO <span>/ OUTCOMES CHECK</span></div>
+</div>
 
+<div class="landing-grid">
   <div class="landing-form-col">
-    <p class="eyebrow">Bootcamp Outcomes Check</p>
-    <h1>AI-Integrated Python &amp; Django Bootcamp</h1>
+    <p class="eyebrow">BOOTCAMP OUTCOMES CHECK</p>
+    <h1>AI-Integrated Python<br>&amp; Django Bootcamp</h1>
     <p class="lede">A short 15-question check mapped to the programme's five expected outcomes — Python, Django, database &amp; auth, AI integration, and deployment.</p>
 
     <div class="outcome-tags">
@@ -36,6 +35,10 @@
         <button class="btn btn-primary" type="submit">Begin check →</button>
       </div>
     </form>
+
+    <div class="stafflink">
+      <a href="{% url 'quiz:staff_gate' %}">Staff review →</a>
+    </div>
   </div>
 </div>
 {% endblock %}
