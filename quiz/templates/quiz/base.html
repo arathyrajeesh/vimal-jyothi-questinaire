@@ -16,7 +16,8 @@ body{background:var(--cream);background-image:radial-gradient(circle at 1px 1px,
 .mark{ width:34px;height:34px; flex-shrink:0; }
 .brandtext{font-family:'IBM Plex Mono', monospace;font-size:12px; letter-spacing:0.14em; text-transform:uppercase;color:var(--navy);font-weight:600;}
 .brandtext span{color:var(--orange);}
-.card{background:var(--paper);border:1px solid var(--line);border-radius:12px;box-shadow:0 12px 32px rgba(21,42,71,0.08);overflow:hidden;}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:12px;box-shadow:0 12px 32px rgba(21,42,71,0.08);overflow:hidden;position:relative;}
+.card::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg, var(--navy) 0%, var(--navy) 60%, var(--orange) 100%);}
 .card-inner{padding:32px 28px;}
 .eyebrow{font-family:'IBM Plex Mono', monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--orange);font-weight:600;margin:0 0 8px 0;}
 h1{font-family:'Fraunces', serif;font-size:28px;line-height:1.2;color:var(--navy);margin:0 0 12px 0;font-weight:700;}
@@ -24,13 +25,31 @@ h1{font-family:'Fraunces', serif;font-size:28px;line-height:1.2;color:var(--navy
 .outcome-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:24px;}
 .otag{background:var(--cream);border:1px solid var(--line);color:var(--navy);font-size:12px;font-family:'IBM Plex Mono', monospace;padding:4px 8px;border-radius:4px;font-weight:500;}
 .fieldlabel{display:block;font-size:13px;font-weight:600;color:var(--navy);margin-bottom:6px;}
-input[type="text"], input[type="password"]{width:100%;padding:10px 12px;font-size:14px;border:1px solid var(--line);border-radius:6px;background:var(--paper);color:var(--ink);outline:none;transition:border-color 0.15s;}
+input[type="text"], input[type="password"]{width:100%;padding:10px 12px;font-size:14px;border:1.5px solid var(--line);border-radius:6px;background:var(--paper);color:var(--ink);outline:none;transition:border-color 0.15s;}
 input[type="text"]:focus, input[type="password"]:focus{border-color:var(--orange);}
 .hint{font-size:12px;color:var(--ink-soft);margin:6px 0 20px 0;}
 .row-end{display:flex;justify-content:flex-end;gap:12px;}
-.btn{display:inline-flex;align-items:center;justify-content:center;padding:10px 18px;font-size:14px;font-weight:600;border-radius:6px;border:none;cursor:pointer;text-decoration:none;transition:background 0.15s;}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 22px;font-size:14px;font-weight:600;border-radius:6px;border:none;cursor:pointer;text-decoration:none;transition:all 0.15s;}
 .btn-primary{background:var(--orange);color:#fff;}
-.btn-primary:hover{background:var(--orange-2);}
+.btn-primary:hover:not(:disabled){background:var(--orange-2);}
+.btn-primary:disabled{background:#C9CDD4;cursor:not-allowed;}
+.btn-ghost{background:transparent;color:var(--ink-soft);border:1px solid var(--line);}
+.btn-ghost:hover{border-color:var(--navy);color:var(--navy);}
+.quizhead{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;}
+.qcount{font-family:'IBM Plex Mono', monospace;font-size:13px;color:var(--navy);font-weight:600;}
+.qcount b{color:var(--orange);}
+.track{height:4px;background:var(--line);border-radius:2px;overflow:hidden;margin-bottom:24px;}
+.track-fill{height:100%;background:var(--orange);transition:width 0.25s ease;}
+.qtopic{font-family:'IBM Plex Mono', monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:8px;}
+.qtext{font-family:'Fraunces', serif;font-size:20px;line-height:1.4;color:var(--ink);margin:0 0 20px 0;font-weight:600;}
+.options{display:flex;flex-direction:column;gap:12px;margin-bottom:24px;}
+.opt{display:flex;align-items:flex-start;gap:12px;border:1.5px solid var(--line);border-radius:8px;padding:14px 16px;cursor:pointer;background:var(--cream);transition:all 0.15s;}
+.opt:hover{border-color:var(--orange);background:#FFFBF7;}
+.opt.selected{border-color:var(--orange);background:#FFF4EE;}
+.opt input[type="radio"]{margin-top:3px;accent-color:var(--orange);flex-shrink:0;}
+.opt-label{font-size:14.5px;line-height:1.45;color:var(--ink);}
+.optkey{font-family:'IBM Plex Mono', monospace;font-size:12px;font-weight:600;color:var(--navy);margin-right:8px;}
+.navrow{display:flex;justify-content:space-between;align-items:center;margin-top:24px;}
 .stafflink{text-align:right;margin-top:16px;font-size:12px;}
 .stafflink a{color:var(--ink-soft);text-decoration:none;}
 .stafflink a:hover{color:var(--orange);}
