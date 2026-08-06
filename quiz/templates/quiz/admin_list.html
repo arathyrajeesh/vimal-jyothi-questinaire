@@ -1,25 +1,26 @@
 {% extends 'quiz/base.html' %}
 {% block footlink %}{% endblock %}
 {% block content %}
-  <p class="eyebrow">Staff review</p>
-  <h1 style="font-size:24px;">Submissions
-    <span style="color:#9AA3AF; font-family:'IBM Plex Mono',monospace; font-size:15px;">({{ count }})</span>
+  <p class="eyebrow">STAFF REVIEW</p>
+  <h1 style="font-size:26px; font-weight:600; margin-bottom: 20px;">Submissions
+    <span style="color:#8C8275; font-family:'IBM Plex Mono',monospace; font-size:18px; font-weight:400;">({{ count }})</span>
   </h1>
 
   {% if rows %}
   <table class="admin-table">
     <thead>
-      <tr><th>Name</th><th>Score</th><th>Per-outcome</th><th>Submitted</th></tr>
+      <tr>
+        <th>NAME</th>
+        <th>SCORE</th>
+        <th>PER-OUTCOME</th>
+      </tr>
     </thead>
     <tbody>
       {% for row in rows %}
       <tr>
-        <td>{{ row.submission.name }}</td>
+        <td class="name-cell">{{ row.submission.name }}</td>
         <td><span class="score-pill {{ row.score_class }}">{{ row.submission.score }}/{{ row.submission.total }} · {{ row.pct }}%</span></td>
         <td class="breakdown">{{ row.breakdown_display }}</td>
-        <td style="font-family:'IBM Plex Mono',monospace; font-size:11.5px; color:#9AA3AF;">
-          {{ row.submission.submitted_at|date:"d M Y" }} {{ row.submission.submitted_at|date:"H:i" }}
-        </td>
       </tr>
       {% endfor %}
     </tbody>
@@ -28,10 +29,16 @@
   <p class="empty">No submissions yet.</p>
   {% endif %}
 
-  <div class="row-end no-print" style="margin-top:24px;">
-    <button onclick="window.print()" class="btn btn-primary" type="button">📥 Download PDF Report</button>
-    <a class="btn btn-ghost" href="{% url 'quiz:staff_list' %}" style="margin-left:10px;">Refresh</a>
-    <a class="btn btn-ghost" href="{% url 'quiz:staff_exit' %}" style="margin-left:10px;">Exit staff view</a>
+  <div class="staff-actions-stack no-print">
+    <button onclick="window.print()" class="btn btn-primary staff-btn-full" type="button">
+      📄 Download PDF Report
+    </button>
+    <a class="btn btn-ghost staff-btn-full" href="{% url 'quiz:staff_list' %}">
+      🔄 Refresh
+    </a>
+    <a class="btn btn-ghost staff-btn-full" href="{% url 'quiz:staff_exit' %}">
+      🚪 Exit staff view
+    </a>
   </div>
 
   <style>

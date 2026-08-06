@@ -1,4 +1,5 @@
 {% extends 'quiz/base.html' %}
+{% block body_class %}quiz-page{% endblock %}
 {% block content %}
   <div class="quizhead">
     <span class="qcount">Q<b>{{ index_display|stringformat:"02d" }}</b> / {{ total }}</span>
@@ -12,9 +13,10 @@
     {% csrf_token %}
     <div class="options">
       {% for opt in options %}
-        <label class="opt {% if selected == opt.idx %}selected{% endif %}">
+        <label class="opt {% if selected == opt.idx %}selected{% endif %}" data-key="{{ opt.key }}">
+          <span class="optkey">{{ opt.key }}</span>
+          <span class="opt-label">{{ opt.text }}</span>
           <input type="radio" name="answer" value="{{ opt.idx }}" {% if selected == opt.idx %}checked{% endif %}>
-          <span class="opt-label"><span class="optkey">{{ opt.key }}</span>{{ opt.text }}</span>
         </label>
       {% endfor %}
     </div>

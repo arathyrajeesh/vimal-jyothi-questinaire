@@ -15,15 +15,18 @@
     <p class="lede">A short 15-question check mapped to the programme's five expected outcomes — Python, Django, database &amp; auth, AI integration, and deployment.</p>
 
     <div class="outcome-tags">
-      <span class="otag">01 Python</span>
-      <span class="otag">02 Django</span>
-      <span class="otag">03 CRUD &amp; Auth</span>
-      <span class="otag">04 AI Integration</span>
-      <span class="otag">05 Deployment</span>
+      <span class="otag"><span class="otag-icon"></></span> 01 Python</span>
+      <span class="otag"><span class="otag-icon dj-icon">dj</span> 02 Django</span>
+      <span class="otag"><span class="otag-icon">🔒</span> 03 CRUD &amp; Auth</span>
+      <span class="otag"><span class="otag-icon">✦</span> 04 AI Integration</span>
+      <span class="otag"><span class="otag-icon">☁️</span> 05 Deployment</span>
     </div>
 
     <div class="stats-banner">
-      <span>🎓 Total Students Attended:</span>
+      <div class="stats-left">
+        <span class="stats-icon">👥</span>
+        <span>Total Students Attended:</span>
+      </div>
       <b>{{ total_students }}</b>
     </div>
 
@@ -33,13 +36,13 @@
       <input type="text" id="nameInput" name="name" placeholder="e.g. Anjali Menon"
              autocomplete="off" value="{{ name }}" autofocus required>
       <p class="hint">Enter your name to begin the assessment.</p>
-      <div class="row-end">
-        <button class="btn btn-primary" type="submit">Begin check →</button>
+      <div class="landing-action-row">
+        <button class="btn btn-primary btn-landing-submit" type="submit">Begin check →</button>
       </div>
     </form>
 
     <div class="stafflink">
-      <a href="{% url 'quiz:staff_gate' %}">Staff review →</a>
+      <a href="{% url 'quiz:staff_gate' %}">STAFF REVIEW →</a>
     </div>
   </div>
 </div>
