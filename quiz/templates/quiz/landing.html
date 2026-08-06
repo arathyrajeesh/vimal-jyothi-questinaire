@@ -10,12 +10,10 @@
   </div>
 
   <div class="landing-form-col">
-    <div class="mobile-logo-wrapper">
-      <img src="{% static 'quiz/logo.png' %}" alt="Acadeno Logo" class="mobile-logo-img">
-    </div>
     <p class="eyebrow">BOOTCAMP OUTCOMES CHECK</p>
     <h1>AI-Integrated Python<br>&amp; Django Bootcamp</h1>
-    <p class="lede">A short 15-question check mapped to the programme's five expected outcomes — Python, Django, database &amp; auth, AI integration, and deployment.</p>
+    <p class="lede">A short 15-question check mapped to the programme's five expected outcomes — Python, Django,
+      database &amp; auth, AI integration, and deployment.</p>
 
     <div class="outcome-tags">
       <span class="otag"><span class="otag-icon"></></span> 01 Python</span>
@@ -36,8 +34,8 @@
     <form method="post" novalidate>
       {% csrf_token %}
       <label class="fieldlabel" for="nameInput">Your name</label>
-      <input type="text" id="nameInput" name="name" placeholder="e.g. Anjali Menon"
-             autocomplete="off" value="{{ name }}" autofocus required>
+      <input type="text" id="nameInput" name="name" placeholder="e.g. Anjali Menon" autocomplete="off"
+        value="{{ name }}" autofocus required>
       <p class="hint">Enter your name to begin the assessment.</p>
       <div class="landing-action-row">
         <button class="btn btn-primary btn-landing-submit" type="submit">Begin check →</button>
