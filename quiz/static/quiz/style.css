@@ -40,34 +40,6 @@ body {
 }
 
 @media (min-width: 769px) {
-  body.landing-page {
-    height: 100vh;
-    overflow: hidden;
-    padding: 0;
-  }
-
-  body.landing-page .shell {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-  }
-
-  body.landing-page .card {
-    flex: 1;
-    min-height: 0;
-  }
-
-  body.landing-page .card-inner {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-
-  body.landing-page .footnote {
-    flex: 0 0 auto;
-  }
-
   body.quiz-page {
     height: 100vh;
     overflow: hidden;
