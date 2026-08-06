@@ -355,8 +355,8 @@ body {
   position: relative;
 }
 
-.card::before {
-  display: none;
+body.landing-page .card-inner {
+  padding: 0;
 }
 
 .card-inner {
@@ -366,29 +366,29 @@ body {
 
 .landing-grid {
   display: grid;
-  grid-template-columns: minmax(320px, 1.1fr) minmax(320px, 0.9fr);
-  min-height: 560px;
+  grid-template-columns: 1fr 1fr;
+  min-height: 640px;
   width: 100%;
   max-width: 100%;
   margin: 0;
   gap: 0;
   overflow: hidden;
-  border-radius: 28px;
-  align-items: center;
+  border-radius: 32px;
 }
 
 .landing-hero-col {
-  /* background: linear-gradient(135deg, #FAF4EB 0%, #F5EDE0 100%); */
-  border-right: 1px solid rgba(0, 0, 0, 0.04);
+  background: radial-gradient(circle at 10% 20%, #FAF0E4 0%, #FAF6F0 60%, #F5ECE0 100%);
+  border-right: 1px solid #F0E6D8;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 56px 42px;
+  padding: 60px 48px;
+  position: relative;
 }
 
 .hero-logo-wrapper {
   width: 100%;
-  max-width: 420px;
+  max-width: 360px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -398,19 +398,19 @@ body {
 .hero-logo-wrapper img {
   width: auto;
   height: auto;
-  max-height: 420px;
+  max-height: 380px;
   max-width: 100%;
   object-fit: contain;
 }
 
 .landing-form-col {
-  padding: 54px 46px;
+  padding: 60px 54px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 22px;
-  max-width: 640px;
-  margin: 0 auto;
+  gap: 20px;
+  width: 100%;
+  background: #FFFFFF;
 }
 
 .stats-banner {
