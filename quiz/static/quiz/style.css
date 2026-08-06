@@ -386,6 +386,17 @@ input[type=text]:focus{ border-color:var(--navy); background:var(--paper); }
   .stafflink {
     text-align: center;
   }
+  .admin-gate-container {
+    min-height: calc(100vh - 120px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  .admin-gate-container .row-end {
+    justify-content: center;
+  }
 }
 
 @media (max-width: 480px) {
@@ -457,4 +468,8 @@ input[type=text]:focus{ border-color:var(--navy); background:var(--paper); }
   }
 }
 
-
+.admin-gate-container {
+  max-width: 440px;
+  margin: 30px auto;
+  padding: 10px 0;
+}

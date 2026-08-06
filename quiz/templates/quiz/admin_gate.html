@@ -1,6 +1,7 @@
 {% extends 'quiz/base.html' %}
 {% block footlink %}{% endblock %}
 {% block content %}
+<div class="admin-gate-container">
   <p class="eyebrow">Staff review</p>
   <h1 style="font-size:24px;">Enter access code</h1>
   <p class="lede">This view lists every submitted score. For coordinator use.</p>
@@ -8,8 +9,9 @@
     {% csrf_token %}
     <input type="text" name="code" placeholder="Access code" autocomplete="off" autofocus>
     <div class="row-end">
-      <a class="btn btn-ghost" href="{% url 'quiz:landing' %}">Cancel</a>
+      <a class="btn btn-ghost" href="{% url 'quiz:landing' %}">← Cancel</a>
       <button class="btn btn-primary" type="submit" style="margin-left:10px;">Enter →</button>
     </div>
   </form>
+</div>
 {% endblock %}
