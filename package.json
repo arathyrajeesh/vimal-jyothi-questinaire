@@ -1,5 +1,6 @@
 {
   "scripts": {
-    "build": "bash build_files.sh"
+    "build": "bash build_files.sh",
+    "vercel-build": "bash build_files.sh"
   }
 }
