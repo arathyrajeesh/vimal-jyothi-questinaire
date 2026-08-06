@@ -622,9 +622,6 @@ input[type=text]:focus {
 .stafflink a:hover {
   color: #9E5632;
 }
-  border-color: var(--navy);
-  background: var(--paper);
-}
 
 .hint {
   font-size: 12.5px;
