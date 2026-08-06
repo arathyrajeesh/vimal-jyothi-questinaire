@@ -1340,6 +1340,19 @@ input[type=text]:focus {
     gap: 16px;
   }
 
+  .mobile-logo-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+
+  .mobile-logo-img {
+    max-height: 120px;
+    width: auto;
+    object-fit: contain;
+  }
+
   .eyebrow {
     font-size: 11px;
     letter-spacing: 0.12em;
